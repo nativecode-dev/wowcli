@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "build": [
+      "rimraf bin",
+      "jsonsort *.json",
+      "prettier {specs,src}/**/*.ts",
+      "tsc --project tsconfig.json"
+    ]
+  }
+}

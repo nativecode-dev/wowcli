@@ -1,0 +1,61 @@
+image: node:latest
+
+stages:
+  - test
+  - canary
+  - prerelease
+  - release
+
+cache:
+  paths:
+    - node_modules
+
+.testsetup: &testsetup
+  services:
+    - nativecode/test-radarr:latest
+    - nativecode/test-sonarr:latest
+  script:
+    - .citools/wait-for ${HOSTNAME} 7878
+    - .citools/wait-for ${HOSTNAME} 8989
+
+before_script:
+  - git submodule update --init -- .citools
+  - npm install
+  - source .ci-env
+
+test:
+  <<: *testsetup
+  stage: test
+  script:
+    - npm test
+  except:
+    - develop
+    - master
+    - /feature\/*/
+
+canary:
+  <<: *testsetup
+  stage: canary
+  script:
+    - npm run canary
+  except:
+    - develop
+    - master
+  only:
+    - /feature\/*/
+
+prerelease:
+  <<: *testsetup
+  stage: prerelease
+  only:
+    - develop
+  script:
+    - npm run pre-release
+
+release:
+  <<: *testsetup
+  stage: release
+  only:
+    - master
+  script:
+    - npm run release

@@ -1,0 +1,43 @@
+{
+  "name": "@nofrills/wowcli",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "opensource@nativecode.com",
+  "keywords": [],
+  "bin": {
+    "wowcli": "bin/wowcli.js"
+  },
+  "main": "bin/wowcli.js",
+  "scripts": {
+    "build": "cli-tasks build",
+    "cli": "ts-node src/wowcli.ts"
+  },
+  "devDependencies": {
+    "@nofrills/tasks": "^9.0.2",
+    "@types/find-down": "^0.1.0",
+    "@types/find-up": "^4.0.0",
+    "@types/node": "^12.12.11",
+    "@types/yargs": "^13.0.3",
+    "@types/yargs-interactive": "^2.1.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "json-sort-cli": "^1.15.1",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.2",
+    "tslint": "^5.20.1",
+    "tslint-config-standard": "^9.0.0",
+    "tslint-no-unused-expression-chai": "^0.1.4",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@nofrills/fs": "^7.0.0",
+    "find-down": "^0.1.4",
+    "find-up": "^4.1.0",
+    "yargs": "^15.0.2",
+    "yargs-interactive": "^3.0.0"
+  }
+}
